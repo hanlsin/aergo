@@ -138,6 +138,7 @@ func (ctx *ServerContext) GetDefaultBlockchainConfig() *BlockchainConfig {
 		NumWorkers:       runtime.NumCPU(),
 		NumLStateClosers: GetDefaultNumLStateClosers(),
 		CloseLimit:       GetDefaultCloseLimit(),
+		MaxRvSize:        types.DefaultMaxRvSize,
 	}
 }
 

@@ -109,6 +109,7 @@ type BlockchainConfig struct {
 	NumWorkers       int    `mapstructure:"numworkers" description:"maximum worker count for chainservice"`
 	NumLStateClosers int    `mapstructure:"numclosers" description:"maximum LuaVM state closer count for chainservice"`
 	CloseLimit       int    `mapstructure:"closelimit" description:"number of LuaVM states which a LuaVM state closer closes at one time"`
+	MaxRvSize        uint32 `mapstructure:"maxreturnvaluesize" description:"maximum return value size from executing smart contract"`
 }
 
 // MempoolConfig defines configurations for mempool service
@@ -234,9 +235,13 @@ coinbaseaccount = "{{.Blockchain.CoinbaseAccount}}"
 maxanchorcount = "{{.Blockchain.MaxAnchorCount}}"
 verifiercount = "{{.Blockchain.VerifierCount}}"
 forceresetheight = "{{.Blockchain.ForceResetHeight}}"
+<<<<<<< HEAD
 numworkers = "{{.Blockchain.NumWorkers}}"
 numclosers = "{{.Blockchain.NumLStateClosers}}"
 closelimit = "{{.Blockchain.CloseLimit}}"
+=======
+maxreturnvaluesize = {{.Blockchain.MaxRvSize}}
+>>>>>>> add config to change the size of the return value from executing a smart contract tx
 
 [mempool]
 showmetrics = {{.Mempool.ShowMetrics}}

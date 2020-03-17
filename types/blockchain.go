@@ -35,6 +35,9 @@ const (
 	// structure of the header is changed.
 	DefaultMaxHdrSize = 400
 	lastFieldOfBH     = "Consensus"
+
+	// DefaultMaxRvSize is the maximum return value size from executing a smart contract tx
+	DefaultMaxRvSize = 1024
 )
 
 type TxHash = []byte

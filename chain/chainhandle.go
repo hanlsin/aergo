@@ -744,7 +744,19 @@ func (cs *ChainService) executeBlock(bstate *state.BlockState, block *types.Bloc
 		return err
 	}
 
-	if len(ex.BlockState.Receipts().Get()) != 0 {
+	receipts := ex.BlockState.Receipts()
+	if len(receipts.Get()) != 0 {
+		// XXX adjust return value
+		// if value is 0, no adjust
+		maxRvSize := cs.cfg.Blockchain.MaxRvSize
+		if maxRvSize > 0 {
+			for _, receipt := range receipts.Get() {
+				if uint32(len(receipt.Ret)) > maxRvSize {
+					modified, _ := json.Marshal(receipt.Ret[:maxRvSize-4] + " ...")
+					receipt.Ret = string(modified)
+				}
+			}
+		}
 		cs.cdb.writeReceipts(block.BlockHash(), block.BlockNo(), ex.BlockState.Receipts())
 	}
 
@@ -1021,7 +1033,8 @@ func executeTx(
 				return err
 			}
 		}
-		rv = adjustRv(rv)
+		// XXX adjust later
+		//rv = adjustRv(rv)
 	}
 	bs.BpReward.Add(&bs.BpReward, txFee)
 
