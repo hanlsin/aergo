@@ -235,13 +235,10 @@ coinbaseaccount = "{{.Blockchain.CoinbaseAccount}}"
 maxanchorcount = "{{.Blockchain.MaxAnchorCount}}"
 verifiercount = "{{.Blockchain.VerifierCount}}"
 forceresetheight = "{{.Blockchain.ForceResetHeight}}"
-<<<<<<< HEAD
 numworkers = "{{.Blockchain.NumWorkers}}"
 numclosers = "{{.Blockchain.NumLStateClosers}}"
 closelimit = "{{.Blockchain.CloseLimit}}"
-=======
 maxreturnvaluesize = {{.Blockchain.MaxRvSize}}
->>>>>>> add config to change the size of the return value from executing a smart contract tx
 
 [mempool]
 showmetrics = {{.Mempool.ShowMetrics}}
